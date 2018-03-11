@@ -1,4 +1,7 @@
 /*eslint-disable no-process-exit*/
+/**
+ * We define the constants only accesible for reading and we import the library needed
+ */
 const got = require('got');
 const money = require('money');
 const chalk = require('chalk');
@@ -7,6 +10,9 @@ const currencies = require('../lib/currencies.json');
 
 const API = 'https://api.fixer.io/latest';
 
+/**
+ * Use currencies.json to convert a currency to another
+ */
 const convert = configuration => {
   const {amount, to, from, response, loading} = configuration;
 
@@ -33,6 +39,10 @@ const convert = configuration => {
   );
   process.exit(1);
 };
+
+/**
+ * Use asynchrone command to load currencies
+ */
 
 const cash = async command => {
   const amount = command.amount;

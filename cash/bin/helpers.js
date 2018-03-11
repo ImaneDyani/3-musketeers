@@ -1,4 +1,7 @@
 /*eslint-disable no-process-exit*/
+/**
+ * We define the constants only accesible for reading and we import the package needed
+ */
 const chalk = require('chalk');
 const updateNotifier = require('update-notifier');
 const Conf = require('conf');
@@ -8,6 +11,9 @@ const config = new Conf();
 
 updateNotifier({pkg}).notify();
 
+/**
+ * Save the currencies indicated by the arguments
+ */
 const saveCurrencies = argv => {
   config.set('defaultFrom', argv[1] || config.get('defaultFrom', 'USD'));
   config.set(
@@ -20,11 +26,17 @@ const saveCurrencies = argv => {
   process.exit(1);
 };
 
+/**
+ *Specify the package version
+ */
 const version = () => {
   console.log(pkg.version);
   process.exit(1);
 };
 
+/**
+ *Run the fonction according to the entry on the command line
+ */
 const help = () => {
   console.log(`
 Usage:
@@ -57,6 +69,10 @@ Examples:
   process.exit(1);
 };
 
+/**
+ *Switch argument fonction
+ */
+ 
 const helpers = argv => {
   // Version
   if (argv.indexOf('--version') !== - 1 || argv.indexOf('-v') !== - 1) {
